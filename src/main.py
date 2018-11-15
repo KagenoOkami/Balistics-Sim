@@ -22,16 +22,17 @@ drag_z = 0.999
 def shoot( angle = 0, rotation = 0, propelant = 0):
 
 	angle_r = math.radians(angle)
+	rotation_r = math.radians(rotation)
 
 	points_x = [1] # West
 	points_y = [1] # Up
 	points_z = [1] # North
 
-	velocity_x = propelant*10* math.cos(angle_r)
+	velocity_x = propelant*10* math.cos(angle_r)*math.sin(rotation_r)
 	velocity_y = propelant*10* math.sin(angle_r)
-	velocity_z = propelant*10* math.sin(rotation)
+	velocity_z = propelant*10* math.cos(angle_r)*math.cos(rotation_r)
 
-	projectile_x = 0
+	projectile_x = 1
 	projectile_y = 1
 	projectile_z = 1
 
@@ -54,27 +55,35 @@ def shoot( angle = 0, rotation = 0, propelant = 0):
 		points_y.append(int(projectile_y))
 		points_z.append(int(projectile_z))
 	
-#	print("A shell hit the ground", np.linalg.norm([projectile_x, projectile_z]), "Meters away" )
-#	print("At", [projectile_x,projectile_y, projectile_z] )
-	print( angle, '\t', propelant, '\t', int( np.linalg.norm([projectile_x, projectile_z]) ) )
+	print("A shell hit the ground", int(np.hypot(projectile_x, projectile_z)), "Meters away" )
+	print("At", int(projectile_x), int(projectile_z) )
+#	print( angle, '\t', propelant, '\t', int( np.linalg.norm([projectile_x, projectile_z]) ) )
 
 	return (points_x, points_y, points_z )
 
-
+# 510 84
+# 516
 
 print("start sim")
+
+shoot( 56, 80.6, 9)
+
  
 
 # Piece of script used to generate the Range Table
 
 '''
-for a in range(10, 100, 10):
+for a in range(10, 90, 10):
 	for p in range(1, 11, 1):
 		shoot( a, 0, p )
-
-print("end sim")
 '''
 
+
+
+
+print("end sim")
+
+'''
 # Plot DataFrame setup
 # Didn't use a oneliner for simplicity
 
@@ -118,6 +127,6 @@ ax.plot( points_x, points_z, points_y, marker='.', markersize=1, linewidth=1.9)
 
 
 
-
 plt.show()
 
+'''
