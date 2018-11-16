@@ -8,13 +8,27 @@ import Artillery
 
 print("start sim")
 
-points = Artillery.shoot( 56, 80.6, 9)
+# Bit of code to ask user input. Doesn't play nice in Sublime, though
+'''
+angle = float( input("angle:") )
+rotation = float( input("rotation:") )
+propelant = float( input("propelant:") )
+'''
+
+points = Artillery.shoot( angle, rotation, propelant)
+
+
+
+
+# Piece of Script that visualises the trajectory
 
 #import Graphs
 #Graphs.showplot(points)
 
-# Piece of script used to generate the Range Table
 
+
+
+# Piece of script used to generate the Range Table
 '''
 for a in range(10, 90, 10):
 	for p in range(1, 11, 1):
@@ -25,8 +39,3 @@ for a in range(10, 90, 10):
 
 
 print("end sim")
-
-'''
-
-
-'''
