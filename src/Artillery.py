@@ -1,5 +1,6 @@
 import math
 import numpy as np
+from random import randint
 
 
 
@@ -11,6 +12,22 @@ gravity_c = 9
 drag_y = 0.999
 drag_x = 0.999
 drag_z = 0.999
+
+
+
+# Generate a target
+def generate_target():
+
+	target_x = 0
+	while not target_x < -50 and not target_x > 50:
+		target_x =  randint(-600,600)
+	target_z = 0
+	while not target_z < -50 and not target_z > 50:
+		target_z =  randint(-600,600)
+	print("Target is at x:"+ str(target_x), "y:"+ str( target_z ) )
+	return target_x, target_z
+
+
 
 
 def shoot( angle = 0, rotation = 0, propelant = 0):

@@ -5,12 +5,8 @@ from random import randint
 import Artillery
 
 
-# Generate a target
+target_x, target_z = Artillery.generate_target()
 
-target_x = randint(50,900)
-target_z = randint(50,900)
-
-print("Target is at x:"+ str(target_x), "y:"+ str( target_z ) )
 print("Hint: Distance is", int(np.hypot(target_x,target_z)), "meters")
 
 print("start sim")
@@ -18,9 +14,9 @@ print("start sim")
 # Bit of code to ask user input. Doesn't play nice in Sublime, though
 hit = 0
 while hit == 0:
-	angle = float( input("angle:") )
+	angle = float( input("angle:") ) # Check the rangetable to see if you have the range to hit it
+	propelant = float( input("propelant:") ) # Angle and propelant are part of the same step
 	rotation = float( input("rotation:") )
-	propelant = float( input("propelant:") )
 
 
 	points = Artillery.shoot( angle, rotation, propelant)
