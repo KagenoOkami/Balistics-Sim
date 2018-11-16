@@ -1,5 +1,4 @@
 from random import randint
-import numpy as np
 import socket               # Import socket module
 
 
